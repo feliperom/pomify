@@ -38,17 +38,17 @@ export function SettingsDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="icon">
-          <SettingsIcon className="h-4 w-4" />
+        <Button variant="outline" size="icon" className="h-9 w-9 sm:h-10 sm:w-10">
+          <SettingsIcon className="h-4 w-4 sm:h-5 sm:w-5" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] p-6">
         <DialogHeader>
-          <DialogTitle>{t('settings')}</DialogTitle>
+          <DialogTitle className="text-lg sm:text-xl">{t('settings')}</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="workDuration" className="text-right">
+          <div className="grid grid-cols-4 items-center gap-3 sm:gap-4">
+            <Label htmlFor="workDuration" className="text-right text-sm">
               {t('workDuration')}
             </Label>
             <Input
@@ -64,8 +64,8 @@ export function SettingsDialog() {
               }
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="shortBreakDuration" className="text-right">
+          <div className="grid grid-cols-4 items-center gap-3 sm:gap-4">
+            <Label htmlFor="shortBreakDuration" className="text-right text-sm">
               {t('shortBreakDuration')}
             </Label>
             <Input
@@ -81,8 +81,8 @@ export function SettingsDialog() {
               }
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="longBreakDuration" className="text-right">
+          <div className="grid grid-cols-4 items-center gap-3 sm:gap-4">
+            <Label htmlFor="longBreakDuration" className="text-right text-sm">
               {t('longBreakDuration')}
             </Label>
             <Input
@@ -98,32 +98,36 @@ export function SettingsDialog() {
               }
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="notifications" className="text-right">
+          <div className="grid grid-cols-4 items-center gap-3 sm:gap-4">
+            <Label htmlFor="notifications" className="text-right text-sm">
               {t('notifications')}
             </Label>
-            <Switch
-              id="notifications"
-              checked={localSettings.notifications}
-              onCheckedChange={(checked) =>
-                setLocalSettings({ ...localSettings, notifications: checked })
-              }
-            />
+            <div className="col-span-3">
+              <Switch
+                id="notifications"
+                checked={localSettings.notifications}
+                onCheckedChange={(checked) =>
+                  setLocalSettings({ ...localSettings, notifications: checked })
+                }
+              />
+            </div>
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="sound" className="text-right">
+          <div className="grid grid-cols-4 items-center gap-3 sm:gap-4">
+            <Label htmlFor="sound" className="text-right text-sm">
               {t('sound')}
             </Label>
-            <Switch
-              id="sound"
-              checked={localSettings.sound}
-              onCheckedChange={(checked) =>
-                setLocalSettings({ ...localSettings, sound: checked })
-              }
-            />
+            <div className="col-span-3">
+              <Switch
+                id="sound"
+                checked={localSettings.sound}
+                onCheckedChange={(checked) =>
+                  setLocalSettings({ ...localSettings, sound: checked })
+                }
+              />
+            </div>
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="language" className="text-right">
+          <div className="grid grid-cols-4 items-center gap-3 sm:gap-4">
+            <Label htmlFor="language" className="text-right text-sm">
               {t('language')}
             </Label>
             <Select
@@ -142,11 +146,13 @@ export function SettingsDialog() {
             </Select>
           </div>
         </div>
-        <div className="flex justify-end gap-4">
-          <Button variant="outline" onClick={() => setOpen(false)}>
+        <div className="flex justify-end gap-3 sm:gap-4">
+          <Button variant="outline" onClick={() => setOpen(false)} className="text-sm">
             {t('cancel')}
           </Button>
-          <Button onClick={handleSave}>{t('save')}</Button>
+          <Button onClick={handleSave} className="text-sm">
+            {t('save')}
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

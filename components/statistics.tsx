@@ -29,27 +29,27 @@ export function Statistics() {
   }));
 
   return (
-    <Card className="p-8 timer-card">
-      <h2 className="text-xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+    <Card className="p-4 sm:p-8 timer-card">
+      <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
         {t('statistics')}
       </h2>
-      <div className="h-[300px]">
+      <div className="h-[250px] sm:h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={chartData} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+          <LineChart data={chartData} margin={{ top: 5, right: 5, bottom: 5, left: -20 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--primary)/0.1)" />
             <XAxis
               dataKey="date"
               type="category"
               tickFormatter={(value) => new Date(value).toLocaleDateString()}
-              tick={{ fontSize: 12 }}
+              tick={{ fontSize: 10, fill: 'hsl(var(--primary)/0.5)' }}
               stroke="hsl(var(--primary)/0.5)"
               padding={{ left: 10, right: 10 }}
             />
             <YAxis
               type="number"
               allowDecimals={false}
-              tick={{ fontSize: 12 }}
-              width={30}
+              tick={{ fontSize: 10, fill: 'hsl(var(--primary)/0.5)' }}
+              width={25}
               stroke="hsl(var(--primary)/0.5)"
             />
             <Tooltip
@@ -59,6 +59,7 @@ export function Statistics() {
                 backgroundColor: 'hsl(var(--background))',
                 border: '1px solid hsl(var(--primary)/0.2)',
                 borderRadius: '8px',
+                fontSize: '12px'
               }}
             />
             <Line
@@ -66,7 +67,7 @@ export function Statistics() {
               dataKey="sessions"
               stroke="hsl(var(--primary))"
               strokeWidth={2}
-              dot={{ fill: "hsl(var(--primary))", strokeWidth: 2 }}
+              dot={{ fill: "hsl(var(--primary))", strokeWidth: 2, r: 4 }}
               activeDot={{ r: 6, fill: "hsl(var(--primary))" }}
             />
           </LineChart>

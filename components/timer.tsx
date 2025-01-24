@@ -48,7 +48,7 @@ export function Timer() {
       }
 
       if (settings.notifications) {
-        new Notification('Pomify', {
+        new Notification('Pomodoro Timer', {
           body: `${mode === 'work' ? 'Work session' : 'Break'} completed!`,
         });
       }
@@ -82,31 +82,31 @@ export function Timer() {
   };
 
   return (
-    <Card className="timer-card w-full max-w-md p-12 relative overflow-hidden">
+    <Card className="timer-card w-full max-w-[320px] sm:max-w-md p-6 sm:p-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none" />
       <div className="relative z-10">
-        <h2 className="text-2xl font-bold mb-8 text-center bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+        <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
           {t(mode === 'work' ? 'work' : mode === 'short-break' ? 'shortBreak' : 'longBreak')}
         </h2>
-        <div className="text-7xl font-mono mb-12 text-center tracking-wider">
+        <div className="text-5xl sm:text-7xl font-mono mb-8 sm:mb-12 text-center tracking-wider">
           {formatTime(timeLeft)}
         </div>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-3 sm:gap-4">
           <Button
             onClick={() => setIsRunning(!isRunning)}
             size="lg"
-            className="w-32 bg-primary hover:bg-primary/90"
+            className="w-28 sm:w-32 bg-primary hover:bg-primary/90 text-sm sm:text-base"
           >
-            {isRunning ? <Pause className="mr-2 h-5 w-5" /> : <Play className="mr-2 h-5 w-5" />}
+            {isRunning ? <Pause className="mr-2 h-4 w-4 sm:h-5 sm:w-5" /> : <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />}
             {isRunning ? t('pause') : t('start')}
           </Button>
           <Button 
             onClick={handleReset} 
             size="lg" 
             variant="outline"
-            className="w-32 border-primary/20 hover:bg-primary/10"
+            className="w-28 sm:w-32 border-primary/20 hover:bg-primary/10 text-sm sm:text-base"
           >
-            <RotateCcw className="mr-2 h-5 w-5" />
+            <RotateCcw className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
             {t('reset')}
           </Button>
         </div>
